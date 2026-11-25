@@ -33,6 +33,8 @@ node build.js
 | `styles.css` | Design, light and dark themes |
 | `app.js` | Interactivity only: filters, project modal, menu, theme |
 | `og-image.png`, `og/og-image.html` | Link preview image and its source |
+| `Aleks-Kalikas-Resume.pdf`, `resume/` | Resume linked from the site, and its Word source |
+| `img/` | Profile photo and project screenshots |
 
 ## License
 

@@ -5,7 +5,7 @@
 
    Run after every change to config.js or template.html:
      node build.js
-   No dependencies — only Node.js. */
+   No dependencies, only Node.js. */
 "use strict";
 var fs = require("fs");
 var path = require("path");
@@ -40,6 +40,10 @@ var ICONS = {
   play: '<svg viewBox="0 0 24 24" ' + P + '><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4z"/></svg>',
   code: '<svg viewBox="0 0 24 24" ' + P + '><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>',
   ext: '<svg viewBox="0 0 24 24" ' + P + '><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>',
+  github: '<svg viewBox="0 0 24 24" ' + P + '><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>',
+  file: '<svg viewBox="0 0 24 24" ' + P + '><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>',
+  briefcase: '<svg viewBox="0 0 24 24" ' + P + '><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" ' + P + '><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>',
   close: '<svg viewBox="0 0 24 24" ' + P + '><path d="M18 6L6 18M6 6l12 12"/></svg>',
   menu: '<svg viewBox="0 0 24 24" ' + P + '><path d="M3 6h18M3 12h18M3 18h18"/></svg>'
 };
@@ -49,7 +53,7 @@ function phone(p) {
   var isAi = p.type === "ai";
   var head = '<div class="phone-bar"><div class="phone-avatar' + (isAi ? " ai" : "") + '">' +
     (isAi ? "AI" : esc(p.title.charAt(0))) + '</div><div class="phone-name">' +
-    esc(p.title.split(" — ")[0]) + "<small>" + (p.type === "miniapp" ? "mini app" : "bot") + "</small></div></div>";
+    esc(p.short || p.title) + "<small>" + (p.type === "miniapp" ? "mini app" : "bot") + "</small></div></div>";
   var body;
   if (p.type === "miniapp") {
     body = '<div class="shop">' + (p.preview || []).map(function (it) {
@@ -102,11 +106,11 @@ var FILTERS = [
   { key: "web", label: "Websites" }
 ].filter(function (f) { return f.key === "all" || S.projects.some(function (p) { return p.type === f.key; }); });
 
+/* Buttons with an empty link are left out instead of showing a disabled "soon" button */
 function linkBtn(url, label, icon, primary) {
-  var ok = !!url;
-  return '<a class="btn ' + (primary ? "btn-primary" : "btn-ghost") + ' btn-sm"' +
-    (ok ? ' href="' + esc(url) + '" target="_blank" rel="noopener"' : ' aria-disabled="true"') + '><span class="ico">' + ICONS[icon] + "</span>" +
-    esc(label) + (ok ? "" : " · soon") + "</a>";
+  if (!url) return "";
+  return '<a class="btn ' + (primary ? "btn-primary" : "btn-ghost") + ' btn-sm" href="' + esc(url) + '" target="_blank" rel="noopener">' +
+    '<span class="ico">' + ICONS[icon] + "</span>" + esc(label) + "</a>";
 }
 
 function caseStudy(p) {
@@ -121,16 +125,45 @@ function caseStudy(p) {
       (p.result ? '<div class="case-block"><h4>Result</h4><p>' + esc(p.result) + "</p></div>" : "") +
       '<div class="case-links">' + linkBtn(L.demo, p.type === "web" ? "Open site" : "Try the demo", p.type === "web" ? "ext" : "send", true) +
         linkBtn(L.video, "Watch video", "play") + linkBtn(L.github, "Source code", "code") + "</div>" +
-      (live ? "" : '<p class="note">This project is in development — a live demo and video walkthrough are coming soon.</p>') +
+      (live ? "" : '<p class="note">This project is still in development. A live demo is coming soon.</p>') +
     '</div><div class="case-visual' + (p.type === "web" ? " case-browser" : "") + '">' + visual(p) + "</div></div></div>";
 }
 
+var mailto = C.email ? "mailto:" + C.email + (C.emailSubject ? "?subject=" + encodeURIComponent(C.emailSubject) : "") : "";
+
+function btn(href, label, icon, primary, external) {
+  return '<a class="btn ' + (primary ? "btn-primary" : "btn-ghost") + '" href="' + esc(href) + '"' +
+    (external ? ' target="_blank" rel="noopener"' : "") + '><span class="ico">' + ICONS[icon] + "</span>" + esc(label) + "</a>";
+}
+
+/* Profiles shown as small links in the hero, About and footer */
+var profiles = [
+  [C.upwork, "Upwork", "briefcase"],
+  [C.github, "GitHub", "github"],
+  [C.linkedin, "LinkedIn", "linkedin"],
+  [C.fiverr, "Fiverr", "ext"],
+  [S.resume, "Resume (PDF)", "file"]
+].filter(function (x) { return x[0]; });
+
+function profileLinks(cls) {
+  if (!profiles.length) return "";
+  return '<div class="' + cls + '">' + profiles.map(function (x) {
+    return '<a href="' + esc(x[0]) + '" target="_blank" rel="noopener"><span class="ico">' + ICONS[x[2]] + "</span>" + esc(x[1]) + "</a>";
+  }).join("") + "</div>";
+}
+
+var heroButtons = [];
+if (mailto) heroButtons.push(btn(mailto, "Email me", "mail", true));
+if (C.telegram) heroButtons.push(btn(C.telegram, "Message on Telegram", "send", !mailto, true));
+
 var contactButtons = [];
-if (C.telegram) contactButtons.push('<a class="btn btn-primary" href="' + esc(C.telegram) + '" target="_blank" rel="noopener"><span class="ico">' + ICONS.send + "</span>" + esc(C.telegramLabel || "Telegram") + "</a>");
-if (C.email) contactButtons.push('<a class="btn btn-ghost" href="mailto:' + esc(C.email) + '"><span class="ico">' + ICONS.mail + "</span>" + esc(C.email) + "</a>");
-[["upwork", "Upwork"], ["fiverr", "Fiverr"], ["github", "GitHub"]].forEach(function (x) {
-  if (C[x[0]]) contactButtons.push('<a class="btn btn-ghost" href="' + esc(C[x[0]]) + '" target="_blank" rel="noopener">' + x[1] + ' <span class="ico">' + ICONS.ext + "</span></a>");
-});
+if (mailto) contactButtons.push(btn(mailto, C.email, "mail", true));
+if (C.upwork) contactButtons.push(btn(C.upwork, "Hire me on Upwork", "briefcase", false, true));
+if (C.telegram) contactButtons.push(btn(C.telegram, "Telegram " + (C.telegramLabel || ""), "send", false, true));
+
+var avatar = S.photo
+  ? '<img src="' + esc(S.photo) + '" alt="' + esc(S.name) + '" width="56" height="56">'
+  : '<span class="logo-mark">' + esc(S.initials) + "</span>";
 
 /* ---------- SEO / social previews ---------- */
 var siteUrl = S.siteUrl || "";
@@ -138,7 +171,7 @@ var absolute = function (u) {
   if (!u || /^https?:\/\//.test(u) || !siteUrl) return u || "";
   return siteUrl.replace(/\/+$/, "") + "/" + u.replace(/^\/+/, "");
 };
-var pageTitle = S.name + " — " + S.role;
+var pageTitle = S.name + " | " + S.role;
 var description = S.description || S.sub;
 
 var VALUES = {
@@ -146,7 +179,7 @@ var VALUES = {
   description: esc(description),
   siteUrl: esc(siteUrl),
   ogImage: esc(absolute(S.ogImage)),
-  ogImageAlt: esc(S.name + " — " + S.role),
+  ogImageAlt: esc(S.name + ", " + S.role),
   name: esc(S.name),
   initials: esc(S.initials),
   role: esc(S.role),
@@ -155,7 +188,13 @@ var VALUES = {
   location: esc(S.location),
   languages: esc(S.languages),
   responseTime: esc(S.responseTime),
-  hireHref: esc(C.telegram || "#contact"),
+  heroAvatar: avatar,
+  heroButtons: heroButtons.join("\n            "),
+  heroLinks: profileLinks("hero-links"),
+  aboutPhoto: S.photo ? '<img class="about-photo" src="' + esc(S.photo) + '" alt="' + esc(S.name) + '" width="320" height="320" loading="lazy">' : "",
+  about: (S.about || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("\n            "),
+  facts: (S.facts || []).map(function (f) { return "<div><dt>" + esc(f.label) + "</dt><dd>" + esc(f.value) + "</dd></div>"; }).join(""),
+  aboutLinks: profileLinks("about-links"),
   year: String(new Date().getFullYear()),
   availPill: S.available ? '<span class="pill" id="availPill"><span class="dot"></span>Available for new projects</span>' : "",
   heroVisual: heroProject ? phone(heroProject) : "",
@@ -185,7 +224,8 @@ var VALUES = {
   faq: S.faq.map(function (f) {
     return "<details><summary>" + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>";
   }).join("\n          "),
-  contactButtons: contactButtons.join("\n            ")
+  contactButtons: contactButtons.join("\n            "),
+  footerLinks: profileLinks("footer-links")
 };
 
 /* ---------- Render ---------- */
