@@ -28,7 +28,7 @@ window.SITE = {
     email: "akalioks24@gmail.com",
     upwork: "",   // ссылка на профиль Upwork, пусто = кнопка скрыта
     fiverr: "",   // ссылка на профиль Fiverr
-    github: ""    // ссылка на GitHub
+    github: "https://github.com/Akalioks"    // ссылка на GitHub
   },
 
   // ---------- Услуги ----------
@@ -91,7 +91,7 @@ window.SITE = {
       ],
       stack: ["Python", "aiogram 3", "SQLAlchemy 2", "PostgreSQL / SQLite", "Docker", "pytest"],
       result: "",
-      links: { demo: "https://t.me/bookmedemobot", video: "", github: "" },
+      links: { demo: "https://t.me/bookmedemobot", video: "", github: "https://github.com/Akalioks/bookme-bot" },
       cover: "",
       preview: [
         { from: "bot", text: "What would you like to book?", buttons: ["✂️ Haircut", "🧔 Beard", "💈 Both"] },
@@ -119,7 +119,7 @@ window.SITE = {
       ],
       stack: ["Python", "aiogram 3", "aiohttp", "Telegram Mini Apps", "Telegram Payments", "JavaScript", "SQLAlchemy 2", "pytest"],
       result: "",
-      links: { demo: "https://t.me/shopnordicbot", video: "", github: "" },
+      links: { demo: "https://t.me/shopnordicbot", video: "", github: "https://github.com/Akalioks/shop-bot" },
       cover: "",
       preview: [
         { name: "Linen duvet", price: "€79" },
@@ -146,7 +146,7 @@ window.SITE = {
       ],
       stack: ["Python", "aiogram 3", "Google Gemini API", "Structured outputs", "SQLAlchemy 2", "Docker", "pytest"],
       result: "",
-      links: { demo: "https://t.me/SmartSupport2026_bot", video: "", github: "" },
+      links: { demo: "https://t.me/SmartSupport2026_bot", video: "", github: "https://github.com/Akalioks/support-bot" },
       cover: "",
       preview: [
         { from: "user", text: "Do you deliver to Tartu?" },
@@ -173,7 +173,7 @@ window.SITE = {
       ],
       stack: ["Python", "aiogram 3", "aiohttp", "SQLAlchemy 2", "Webhooks", "Google Sheets", "Docker", "pytest"],
       result: "",
-      links: { demo: "https://t.me/SunBaySolarbot", video: "", github: "" },
+      links: { demo: "https://t.me/SunBaySolarbot", video: "", github: "https://github.com/Akalioks/leadcatcher-bot" },
       cover: "",
       preview: [
         { from: "bot", text: "What is your average monthly electricity bill?", buttons: ["€50–150", "€150–300", "Over €300"] },
@@ -201,7 +201,7 @@ window.SITE = {
       ],
       stack: ["Astro", "Tailwind CSS", "TypeScript", "Schema.org", "Caddy", "Telegram Bot API"],
       result: "",
-      links: { demo: "https://landings.a-kalikas.duckdns.org/", video: "", github: "" },
+      links: { demo: "https://landings.a-kalikas.duckdns.org/", video: "", github: "https://github.com/Akalioks/landings" },
       cover: "",
       preview: { url: "dental.a-kalikas.duckdns.org", variant: "landing" }
     },
@@ -223,7 +223,7 @@ window.SITE = {
       ],
       stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Recharts", "SQLite", "Telegram Login", "Docker"],
       result: "",
-      links: { demo: "https://admin.a-kalikas.duckdns.org/", video: "", github: "" },
+      links: { demo: "https://admin.a-kalikas.duckdns.org/", video: "", github: "https://github.com/Akalioks/admin-dashboard" },
       cover: "",
       preview: { url: "admin.a-kalikas.duckdns.org", variant: "dashboard" }
     }
