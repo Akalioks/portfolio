@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{pageTitle}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="author" content="{{name}}">
+  <link rel="canonical" href="{{siteUrl}}">
+
+  <!-- Open Graph: link previews in Telegram, LinkedIn, Slack, WhatsApp, Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{name}}">
+  <meta property="og:title" content="{{pageTitle}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{siteUrl}}">
+  <meta property="og:image" content="{{ogImage}}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ogImageAlt}}">
+  <meta property="og:locale" content="en_US">
+  <!-- X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{pageTitle}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:image" content="{{ogImage}}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo"><span class="logo-mark">{{initials}}</span><span>{{name}}</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button>
+        <a class="btn btn-primary btn-sm" href="{{hireHref}}" target="_blank" rel="noopener">Hire me</a>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">{{icon.menu}}</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          {{availPill}}
+          <p class="eyebrow">{{role}}</p>
+          <h1>{{headline}}</h1>
+          <p class="lead">{{sub}}</p>
+          <div class="hero-cta">
+            <a href="#work" class="btn btn-primary">See my work</a>
+            <a class="btn btn-ghost" href="{{hireHref}}" target="_blank" rel="noopener"><span class="ico">{{icon.send}}</span>Message on Telegram</a>
+          </div>
+          <ul class="meta">
+            <li><span class="ico">{{icon.pin}}</span><span>{{location}}</span></li>
+            <li><span class="ico">{{icon.globe}}</span><span>{{languages}}</span></li>
+            <li><span class="ico">{{icon.clock}}</span><span>{{responseTime}}</span></li>
+          </ul>
+        </div>
+        <div class="hero-visual" aria-hidden="true">{{heroVisual}}</div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">What I build</p>
+          <h2>Automation that works while you sleep</h2>
+        </div>
+        <div class="grid-4">
+          {{services}}
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Selected work</p>
+          <h2>Projects & live demos</h2>
+          <p class="muted">Open any project to see the problem, the solution and the tech behind it.</p>
+        </div>
+        <div class="filters" id="filters" role="tablist">{{filters}}</div>
+        <div class="grid-3" id="projectsGrid">
+          {{projects}}
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How I work</p>
+          <h2>Simple, transparent process</h2>
+        </div>
+        <ol class="steps">
+          {{process}}
+        </ol>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Packages</p>
+          <h2>Clear prices, fixed before we start</h2>
+          <p class="muted">Every project is quoted individually — these are typical starting points.</p>
+        </div>
+        <div class="grid-4">
+          {{pricing}}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container narrow">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Questions clients ask</h2>
+        </div>
+        <div class="faq">
+          {{faq}}
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="cta-card">
+          <div>
+            <h2>Have a project in mind?</h2>
+            <p class="lead">Tell me what you need — you'll get a plan and a fixed price within a day.</p>
+          </div>
+          <div class="cta-buttons">
+            {{contactButtons}}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year">{{year}}</span> {{name}}</span>
+      <span class="muted">{{location}}</span>
+    </div>
+  </footer>
+
+  <!-- CASE STUDIES: full text of every project, shown in the modal -->
+  <div id="cases" hidden>
+    {{cases}}
+  </div>
+
+  <!-- CASE STUDY MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="icon-btn modal-close" data-close aria-label="Close">{{icon.close}}</button>
+      <div id="modalBody"></div>
+    </article>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
