@@ -40,13 +40,13 @@
       <nav class="nav-links" id="navLinks">
         <a href="#services">Services</a>
         <a href="#work">Work</a>
-        <a href="#process">Process</a>
+        <a href="#about">About</a>
         <a href="#pricing">Pricing</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-actions">
         <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"></button>
-        <a class="btn btn-primary btn-sm" href="{{hireHref}}" target="_blank" rel="noopener">Hire me</a>
+        <a class="btn btn-primary btn-sm" href="#contact">Hire me</a>
         <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">{{icon.menu}}</button>
       </div>
     </div>
@@ -58,18 +58,21 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           {{availPill}}
-          <p class="eyebrow">{{role}}</p>
+          <div class="hero-person">
+            {{heroAvatar}}
+            <div><strong>{{name}}</strong><span>{{role}} in Estonia</span></div>
+          </div>
           <h1>{{headline}}</h1>
           <p class="lead">{{sub}}</p>
           <div class="hero-cta">
-            <a href="#work" class="btn btn-primary">See my work</a>
-            <a class="btn btn-ghost" href="{{hireHref}}" target="_blank" rel="noopener"><span class="ico">{{icon.send}}</span>Message on Telegram</a>
+            {{heroButtons}}
           </div>
           <ul class="meta">
             <li><span class="ico">{{icon.pin}}</span><span>{{location}}</span></li>
             <li><span class="ico">{{icon.globe}}</span><span>{{languages}}</span></li>
             <li><span class="ico">{{icon.clock}}</span><span>{{responseTime}}</span></li>
           </ul>
+          {{heroLinks}}
         </div>
         <div class="hero-visual" aria-hidden="true">{{heroVisual}}</div>
       </div>
@@ -79,8 +82,8 @@
     <section id="services" class="section">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">What I build</p>
-          <h2>Automation that works while you sleep</h2>
+          <p class="eyebrow">Services</p>
+          <h2>What I can build for you</h2>
         </div>
         <div class="grid-4">
           {{services}}
@@ -92,9 +95,9 @@
     <section id="work" class="section section-alt">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Selected work</p>
-          <h2>Projects & live demos</h2>
-          <p class="muted">Open any project to see the problem, the solution and the tech behind it.</p>
+          <p class="eyebrow">Portfolio</p>
+          <h2>Six projects you can try right now</h2>
+          <p class="muted">All of them are live. Open a project to see the problem it solves, what it does and its code on GitHub.</p>
         </div>
         <div class="filters" id="filters" role="tablist">{{filters}}</div>
         <div class="grid-3" id="projectsGrid">
@@ -103,12 +106,30 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container about-grid">
+        {{aboutPhoto}}
+        <div>
+          <div class="section-head">
+            <p class="eyebrow">About</p>
+            <h2>Hi, I'm Aleks</h2>
+          </div>
+          <div class="about-text">
+            {{about}}
+          </div>
+          <dl class="facts">{{facts}}</dl>
+          {{aboutLinks}}
+        </div>
+      </div>
+    </section>
+
     <!-- PROCESS -->
-    <section id="process" class="section">
+    <section id="process" class="section section-alt">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">How I work</p>
-          <h2>Simple, transparent process</h2>
+          <h2>From first message to launch</h2>
         </div>
         <ol class="steps">
           {{process}}
@@ -117,12 +138,12 @@
     </section>
 
     <!-- PRICING -->
-    <section id="pricing" class="section section-alt">
+    <section id="pricing" class="section">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Packages</p>
-          <h2>Clear prices, fixed before we start</h2>
-          <p class="muted">Every project is quoted individually — these are typical starting points.</p>
+          <p class="eyebrow">Prices</p>
+          <h2>Starting prices</h2>
+          <p class="muted">Every project is different, so these are starting points. You get a fixed quote before any work begins.</p>
         </div>
         <div class="grid-4">
           {{pricing}}
@@ -131,11 +152,11 @@
     </section>
 
     <!-- FAQ -->
-    <section class="section">
+    <section class="section section-alt">
       <div class="container narrow">
         <div class="section-head">
           <p class="eyebrow">FAQ</p>
-          <h2>Questions clients ask</h2>
+          <h2>Common questions</h2>
         </div>
         <div class="faq">
           {{faq}}
@@ -148,8 +169,8 @@
       <div class="container">
         <div class="cta-card">
           <div>
-            <h2>Have a project in mind?</h2>
-            <p class="lead">Tell me what you need — you'll get a plan and a fixed price within a day.</p>
+            <h2>Tell me about your project</h2>
+            <p class="lead">A few lines are enough: what your business does and what you'd like to automate. I'll reply with questions or a rough plan and price, usually the same day.</p>
           </div>
           <div class="cta-buttons">
             {{contactButtons}}
@@ -162,6 +183,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <span>© <span id="year">{{year}}</span> {{name}}</span>
+      {{footerLinks}}
       <span class="muted">{{location}}</span>
     </div>
   </footer>

@@ -1,73 +1,94 @@
 /* =====================================================================
-   ВСЁ СОДЕРЖИМОЕ САЙТА — ЗДЕСЬ.
+   ВСЁ СОДЕРЖИМОЕ САЙТА ЗДЕСЬ.
    Меняйте тексты, ссылки и проекты в этом файле. HTML трогать не нужно.
    После правок запустите:  node build.js  (пересоберёт index.html)
+   Совет: не используйте длинное тире (—), пишите короткими фразами.
    ===================================================================== */
 
 window.SITE = {
   // ---------- О вас ----------
   name: "Aleks Kalikas",
   initials: "AK",
-  role: "Telegram Bot & Mini App Developer",
-  headline: "Telegram bots and AI assistants that take bookings, sell products and answer customers 24/7.",
-  sub: "I help small businesses automate sales and support inside Telegram — plus fast landing pages that send every lead straight to your phone.",
-  location: "Estonia, EU · GMT+2",
-  languages: "English · Russian",
-  responseTime: "Replies within a few hours",
-  available: true, // false — скрыть зелёный бейдж «Available»
+  photo: "img/aleks.webp", // квадратное фото; пусто = вместо фото будут инициалы
+  role: "Telegram Bot Developer",
+  headline: "Telegram bots that take bookings, orders and payments for small businesses",
+  sub: "Your customers book a time, place an order or get an answer in the chat app they already use. Every request lands in your Telegram or a Google Sheet, so nobody copies orders out of DMs by hand.",
+  location: "Estonia, EU (GMT+2)",
+  languages: "English, Russian",
+  responseTime: "Usually replies within a few hours",
+  available: true, // false = скрыть зелёный бейдж «Available»
+
+  // ---------- Блок «About» ----------
+  about: [
+    "I'm a developer from Estonia. I build Telegram bots and small web apps for businesses that talk to their customers in messengers: salons, online shops and local services.",
+    "All six projects below run on my own server with Docker, HTTPS and daily database backups, and together they have close to 100 automated tests. Client projects get the same setup, not just a folder of code.",
+    "Before I write anything, I want to understand how your business works day to day. Expect a few questions at the start. It saves a lot of rework later."
+  ],
+  facts: [
+    { label: "Based in", value: "Estonia, EU (GMT+2)" },
+    { label: "Languages", value: "English, Russian, Estonian (basic)" },
+    { label: "Main stack", value: "Python, aiogram, Next.js, TypeScript" },
+    { label: "Hosting", value: "Docker, Caddy, Ubuntu VPS" }
+  ],
 
   // ---------- SEO и превью ссылок (Google, Telegram, LinkedIn, Upwork, Slack) ----------
-  siteUrl: "https://a-kalikas.duckdns.org/", // адрес сайта; если купите домен — поменяйте здесь
-  description: "Freelance Telegram bot developer: booking and lead bots, Telegram Mini App stores, AI support assistants and landing pages for small businesses. Live demos, fixed prices.",
+  siteUrl: "https://a-kalikas.duckdns.org/", // адрес сайта; если купите домен, поменяйте здесь
+  description: "Aleks Kalikas, Telegram bot developer in Estonia. Booking and order bots, Telegram Mini App stores with card payments, AI support assistants and landing pages. Six live demos, fixed prices.",
   ogImage: "og-image.png", // картинка 1200×630 для превью ссылки
+  resume: "Aleks-Kalikas-Resume.pdf", // PDF-резюме; пусто = кнопка «Resume» скрыта
 
-  // ---------- Контакты (замените на свои) ----------
+  // ---------- Контакты ----------
   contacts: {
     telegram: "https://t.me/StoneKamen7",
     telegramLabel: "@StoneKamen7",
     email: "akalioks24@gmail.com",
-    upwork: "",   // ссылка на профиль Upwork, пусто = кнопка скрыта
-    fiverr: "",   // ссылка на профиль Fiverr
-    github: "https://github.com/Akalioks"    // ссылка на GitHub
+    emailSubject: "Project inquiry", // тема письма, которая подставится при клике
+    upwork: "https://www.upwork.com/freelancers/~0125d41676b0e3d83d",
+    linkedin: "", // ссылка на LinkedIn, пусто = скрыто
+    fiverr: "",   // ссылка на Fiverr, пусто = скрыто
+    github: "https://github.com/Akalioks"
   },
 
   // ---------- Услуги ----------
   services: [
-    { icon: "bot",  title: "Telegram Bots",       text: "Booking, ordering, lead capture, notifications and admin panels — all inside Telegram." },
-    { icon: "app",  title: "Telegram Mini Apps",  text: "Full web apps that open in Telegram: stores, catalogs, dashboards, with payments." },
-    { icon: "ai",   title: "AI Chatbots",         text: "Assistants that answer from your own documents and hand off to a human when needed." },
-    { icon: "web",  title: "Landing Pages",       text: "Fast, mobile-first sites with forms that deliver inquiries to your Telegram." }
+    { icon: "bot",  title: "Telegram bots",          text: "Bots for bookings, orders, lead forms, reminders and broadcasts, with an admin panel you run from your phone." },
+    { icon: "app",  title: "Telegram Mini Apps",     text: "A store, catalog or dashboard that opens inside Telegram. Customers browse, add to cart and pay by card without leaving the chat." },
+    { icon: "ai",   title: "AI support assistants",  text: "A chatbot that answers from your price list, FAQ and policies. When it doesn't know, it says so and hands the chat to a person." },
+    { icon: "web",  title: "Landing pages",          text: "A fast one-page site for your business. Every form submission goes straight to your Telegram or a Google Sheet." }
   ],
 
   // ---------- Как я работаю ----------
   process: [
-    { title: "Free brief",        text: "A short call or chat to understand your business and what the bot or site must do." },
-    { title: "Fixed price & plan", text: "You get a clear scope, timeline and fixed price before any work starts." },
-    { title: "Build with demos",  text: "You can test a live demo every few days and give feedback as we go." },
-    { title: "Launch & support",  text: "I deploy everything and give 14 days of free fixes after launch." }
+    { title: "Tell me what you need",  text: "Write by email, Upwork or Telegram, or we can talk on a short video call. I'll ask questions until I understand how your business works." },
+    { title: "Get a fixed quote",      text: "You get a written plan: what the bot will do, how long it takes and what it costs. The price only changes if the scope does." },
+    { title: "Try it while it's built", text: "Every few days you get a demo to try on your phone, so you can give feedback early instead of at the end." },
+    { title: "Launch and support",     text: "I put it on a server, set up backups and HTTPS, and fix any bugs for free for 14 days after launch." }
   ],
 
   // ---------- Пакеты и цены (поменяйте под себя) ----------
   packages: [
-    { name: "Starter Bot",  price: "from $150", features: ["Menu & FAQ", "Contact / order form", "Admin notifications", "Deploy included"] },
-    { name: "Business Bot", price: "from $400", features: ["Bookings or orders", "Database & admin panel", "Payments", "Reminders & broadcasts"], featured: true },
-    { name: "AI Assistant", price: "from $600", features: ["Answers from your docs", "Human hand-off", "Multilingual", "Usage dashboard"] },
-    { name: "Landing Page", price: "from $250", features: ["Mobile-first design", "Form → Telegram", "SEO basics", "Hosting setup"] }
+    { name: "Starter bot",  price: "from $150", features: ["Menu and FAQ", "Contact or order form", "Notifications to you", "Hosting setup included"] },
+    { name: "Business bot", price: "from $400", features: ["Bookings or orders", "Database and admin panel", "Card payments", "Reminders and broadcasts"], featured: true },
+    { name: "AI assistant", price: "from $600", features: ["Answers from your documents", "Hand-off to a person", "Several languages", "Usage limits and stats"] },
+    { name: "Landing page", price: "from $250", features: ["Mobile-first design", "Form sends to Telegram", "SEO basics", "Hosting setup included"] }
   ],
 
   // ---------- FAQ ----------
   faq: [
-    { q: "Do I own the code?", a: "Yes. You get the full source code and all accounts are registered to you." },
-    { q: "Where will the bot be hosted?", a: "On a reliable cloud server. I set it up and can maintain it for a small monthly fee, or hand it over to you." },
-    { q: "What do you need from me to start?", a: "A short description of your business, examples you like, and any texts, prices or documents the bot should use." },
-    { q: "Can I change texts and prices myself later?", a: "Yes — most projects include an admin panel so you don't need a developer for everyday changes." }
+    { q: "How do we communicate?", a: "Whichever way suits you: email, Upwork messages, Telegram or a video call. I'm in Estonia (GMT+2) and usually reply within a few hours on weekdays." },
+    { q: "Can we work through Upwork?", a: "Yes. If you prefer Upwork's contracts and payment protection, we can run the whole project there." },
+    { q: "Do I own the code?", a: "Yes. You get the full source code, and the bot, server and other accounts are registered to you." },
+    { q: "Where will the bot run?", a: "On a cloud server (VPS). I set it up, and after launch I can look after it for a small monthly fee or hand everything over to you." },
+    { q: "What do you need from me to start?", a: "A short description of your business and what the bot should do. Links to bots or sites you like help, plus any texts, prices or documents it should use." },
+    { q: "Can I change texts and prices later myself?", a: "Yes. Most projects include an admin panel where you edit prices, services and texts without a developer." }
   ],
 
   /* ---------- ПРОЕКТЫ ----------
-     status: "soon" — карточка с меткой «In development»
-             "live" — готовый проект, кнопки ссылок активны
+     status: "soon" = карточка с меткой «In development»
+             "live" = готовый проект, кнопки ссылок активны
      type:   "bot" | "miniapp" | "ai" | "web"   (для фильтра и превью)
-     links:  demo (бот или сайт), video (Loom/YouTube), github — пусто = «скоро»
+     short:  короткое имя для макета телефона
+     links:  demo (бот или сайт), video (Loom/YouTube), github. Пустая ссылка = кнопка скрыта
      cover:  путь к скриншоту, например "img/bookme.png". Пусто = рисованный макет
      result: итог проекта. Пишите только реальные цифры, иначе оставьте пустым.
      preview: сообщения для макета чата (bot/user) или блоки для макета сайта
@@ -78,16 +99,17 @@ window.SITE = {
       status: "live",
       type: "bot",
       typeLabel: "Telegram Bot",
-      title: "BookMe — Booking Bot",
-      tagline: "Clients book an appointment in 30 seconds; the owner manages everything from Telegram.",
-      problem: "Small salons take bookings through DMs and phone calls — slots get double-booked, clients forget visits, and the owner answers messages all day.",
+      title: "BookMe: booking bot for salons",
+      short: "BookMe",
+      tagline: "Clients book a visit in about 30 seconds. The owner runs the whole schedule from Telegram.",
+      problem: "Small salons take bookings through DMs and phone calls. Slots get double-booked, clients forget their visits, and the owner spends the day answering messages.",
       solution: [
-        "Pick a service, a master (or 'any available') and a free time slot with buttons",
-        "Double bookings are impossible — every slot is re-checked before saving",
-        "Automatic reminders 24 h and 2 h before the visit, with a one-tap cancel",
-        "Owner panel in Telegram: daily schedule, cancellations with client notice, stats, broadcasts",
-        "Export of all bookings to CSV for Excel or Google Sheets",
-        "Covered by end-to-end tests of every dialog"
+        "Clients pick a service, a specialist (or anyone free) and a time slot with buttons",
+        "Each slot is checked again right before saving, so two people can't book the same time",
+        "Reminders go out 24 hours and 2 hours before the visit, with a one-tap cancel",
+        "Owner panel in Telegram: today's schedule, cancellations that notify the client, stats and broadcasts",
+        "All bookings export to CSV for Excel or Google Sheets",
+        "End-to-end tests cover every dialog"
       ],
       stack: ["Python", "aiogram 3", "SQLAlchemy 2", "PostgreSQL / SQLite", "Docker", "pytest"],
       result: "",
@@ -106,16 +128,17 @@ window.SITE = {
       status: "live",
       type: "miniapp",
       typeLabel: "Mini App",
-      title: "ShopApp — Store in Telegram",
-      tagline: "A complete online store that opens right inside Telegram, with cart and payments.",
-      problem: "Shops that sell through Telegram and Instagram DMs have no catalog or cart — every order is typed by hand and many get lost.",
+      title: "ShopApp: online store inside Telegram",
+      short: "ShopApp",
+      tagline: "A full store with a catalog, cart and card payments that opens right in Telegram.",
+      problem: "Shops that sell through Telegram and Instagram DMs have no catalog or cart. Every order is typed out by hand, and some get lost.",
       solution: [
-        "Catalog with categories, search and product cards; follows the user's Telegram light/dark theme",
-        "Cart and checkout in a few taps: delivery options, automatic free-delivery threshold, saved contact details",
-        "Card payments inside Telegram (Telegram Payments + Stripe) or pay on pickup",
-        "Every request is verified with Telegram's signature; prices are always recalculated on the server",
-        "Owner gets each order in the chat and updates its status with one tap — the customer is notified",
-        "Prices and stock editable right in the app's Admin tab, no code needed"
+        "Catalog with categories, search and product pages that follows the user's light or dark Telegram theme",
+        "Checkout in a few taps: delivery options, a free-delivery threshold and saved contact details",
+        "Card payments inside Telegram (Telegram Payments with Stripe) or pay on pickup",
+        "Every request is checked against Telegram's signature, and prices are always recalculated on the server",
+        "The owner gets each order in the chat and changes its status with one tap. The customer is notified automatically",
+        "Prices and stock are edited in the app's Admin tab, no code needed"
       ],
       stack: ["Python", "aiogram 3", "aiohttp", "Telegram Mini Apps", "Telegram Payments", "JavaScript", "SQLAlchemy 2", "pytest"],
       result: "",
@@ -133,16 +156,17 @@ window.SITE = {
       status: "live",
       type: "ai",
       typeLabel: "AI Chatbot",
-      title: "AI Support Assistant",
-      tagline: "Answers customer questions 24/7 from the company's own documents and hands off to a human when needed.",
-      problem: "Support teams answer the same 20 questions every day, and customers wait hours for simple answers.",
+      title: "AI support assistant",
+      short: "Support assistant",
+      tagline: "Answers customer questions at any hour from the company's own documents, and passes the chat to a person when needed.",
+      problem: "Support staff answer the same 20 questions every day, and customers wait hours for simple answers.",
       solution: [
-        "Answers only from your price list, FAQ and policies — says 'I don't know' instead of inventing",
-        "Owner adds or removes documents (.txt, .md, .pdf) right in Telegram",
-        "Hands the chat to a live manager with the conversation so far; the manager replies from Telegram",
+        "Answers only from your price list, FAQ and policies. If the answer isn't there, it says so instead of making something up",
+        "The owner adds or removes documents (.txt, .md, .pdf) right in Telegram",
+        "Hands the chat to a live manager along with the conversation so far. The manager replies from Telegram",
         "Understands and replies in English, Russian and Estonian",
-        "Automatic fallback to a backup model when the main one is overloaded; built-in usage limits",
-        "Covered by automated tests of every dialog and of the AI layer"
+        "Switches to a backup model when the main one is overloaded, and has built-in usage limits",
+        "Automated tests cover every dialog and the AI layer"
       ],
       stack: ["Python", "aiogram 3", "Google Gemini API", "Structured outputs", "SQLAlchemy 2", "Docker", "pytest"],
       result: "",
@@ -152,7 +176,7 @@ window.SITE = {
         { from: "user", text: "Do you deliver to Tartu?" },
         { from: "bot", text: "Yes! Delivery to Tartu takes 1–2 days and costs €4.90. Free for orders over €50 🚚" },
         { from: "user", text: "Can I talk to a person?" },
-        { from: "bot", text: "Of course — connecting you with a manager now 👤" }
+        { from: "bot", text: "Of course, connecting you with a manager now 👤" }
       ]
     },
     {
@@ -160,16 +184,17 @@ window.SITE = {
       status: "live",
       type: "bot",
       typeLabel: "Telegram Bot",
-      title: "LeadCatcher — Lead Bot",
-      tagline: "Turns ad traffic into qualified leads and delivers them to the sales team in seconds.",
-      problem: "Ad clicks end up in DMs, managers ask the same questions by hand, and hot leads go cold while nobody answers.",
+      title: "LeadCatcher: lead qualification bot",
+      short: "LeadCatcher",
+      tagline: "Turns ad clicks into qualified leads and sends them to the sales team within seconds.",
+      problem: "Ad clicks end up in DMs, managers ask the same questions by hand, and good leads go cold while nobody replies.",
       solution: [
-        "Short questionnaire with buttons, answer validation and one-tap phone sharing",
-        "Automatic lead scoring: hot / warm / cold, with the ad campaign tracked from the link",
-        "Lead card in the sales group: one manager takes it, then Contacted / Won / Lost",
-        "Alert when a hot lead waits too long; a friendly reminder to people who stopped half-way",
-        "Every lead goes to Google Sheets or any CRM via signed webhooks, with automatic retries",
-        "Website forms feed the same pipeline; questions and scores are edited in one file"
+        "A short questionnaire with buttons, input checks and one-tap phone sharing",
+        "Each lead gets a score (hot, warm or cold) and a note of which ad campaign it came from",
+        "Leads appear in the sales group. A manager claims one and marks it Contacted, Won or Lost",
+        "An alert fires if a hot lead waits too long, and people who stopped halfway get a reminder",
+        "Every lead is sent to Google Sheets or any CRM through signed webhooks, with retries if delivery fails",
+        "Website forms feed into the same pipeline. Questions and scoring rules live in one file"
       ],
       stack: ["Python", "aiogram 3", "aiohttp", "SQLAlchemy 2", "Webhooks", "Google Sheets", "Docker", "pytest"],
       result: "",
@@ -188,16 +213,17 @@ window.SITE = {
       status: "live",
       type: "web",
       typeLabel: "Website",
-      title: "Landing Pages for Local Business",
-      tagline: "Fast, mobile-first landing pages that send every inquiry straight to the owner's Telegram.",
-      problem: "Many small businesses have no website, or an old one that loads slowly on phones and doesn't bring inquiries.",
+      title: "Landing pages for local businesses",
+      short: "Landing pages",
+      tagline: "Fast, mobile-first pages that send every inquiry straight to the owner's Telegram.",
+      problem: "Many small businesses have no website, or an old one that loads slowly on phones and brings in no inquiries.",
       solution: [
-        "Three niches, three styles: a dental clinic, a restaurant and an online course",
-        "Booking forms built for each niche: service and time, table and guests, plan and level",
-        "Every request lands in the owner's Telegram and Google Sheets via my LeadCatcher bot",
-        "Mobile-first with sticky call / book buttons; about 10 KB of compressed HTML per page, self-hosted fonts",
-        "SEO basics: meta tags, social previews and Schema.org data (Dentist, Restaurant, Course)",
-        "All texts, prices and opening hours in one data file per site, no need to touch the design"
+        "Three businesses, three designs: a dental clinic, a restaurant and an online course",
+        "A booking form for each: service and time, table and guests, plan and level",
+        "Every request goes to the owner's Telegram and Google Sheets through the LeadCatcher bot",
+        "Built for phones first, with sticky call and booking buttons. Each page is about 10 KB of compressed HTML with self-hosted fonts",
+        "SEO basics: meta tags, link previews and Schema.org data (Dentist, Restaurant, Course)",
+        "Texts, prices and opening hours sit in one data file per site, so updates never touch the design"
       ],
       stack: ["Astro", "Tailwind CSS", "TypeScript", "Schema.org", "Caddy", "Telegram Bot API"],
       result: "",
@@ -210,16 +236,17 @@ window.SITE = {
       status: "live",
       type: "web",
       typeLabel: "Web App",
-      title: "Bot Admin Dashboard",
-      tagline: "A web panel where the owner sees bookings, clients and revenue from their Telegram bot and edits prices.",
-      problem: "Owners can't see the big picture: how many bookings came in, which services sell best, which clients stopped coming.",
+      title: "Admin dashboard for the booking bot",
+      short: "Admin dashboard",
+      tagline: "A web panel where the owner sees bookings, clients and revenue from the bot, and edits prices.",
+      problem: "The owner can't see the big picture: how many bookings came in, which services sell best and which clients stopped coming.",
       solution: [
-        "Works on the bot's own database: every booking, client and price, always up to date",
-        "KPIs with period-over-period change, visits and revenue chart, revenue by service, staff load",
-        "Busy-hours heatmap to plan shifts and discounts for quiet hours",
-        "Bookings and clients with search and filters; cancelling a booking notifies the client in Telegram",
-        "Edit services, prices and staff: the bot shows the changes instantly",
-        "Secure login with Telegram; demo visitors get their own private copy of sample data"
+        "Reads the bot's own database, so bookings, clients and prices are always current",
+        "Key numbers compared with the previous period, a visits and revenue chart, revenue by service and staff load",
+        "A busy-hours heatmap to plan shifts and quiet-hour discounts",
+        "Bookings and clients with search and filters. Cancelling a booking notifies the client in Telegram",
+        "Edit services, prices and staff, and the bot shows the changes right away",
+        "Log in with Telegram. Demo visitors get their own private copy of sample data"
       ],
       stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Recharts", "SQLite", "Telegram Login", "Docker"],
       result: "",
